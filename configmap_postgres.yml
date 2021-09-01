@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: postgres-config
   labels:
-    app: postgres
+    app: db_postgre
 data:
   POSTGRES_DB: dubbing
   POSTGRES_USER: dubbing

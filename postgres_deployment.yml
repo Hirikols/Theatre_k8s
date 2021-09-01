@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: db_postgre
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres
+      app: db_postgre
   template:
     metadata:
       labels:
-        app: postgres
+        app: db_postgre
     spec:
       containers:
-        - name: postgres
+        - name: db_postgre
           image: registry.hiriko.local:5000/postgres:11.2-alpine
           imagePullPolicy: "IfNotPresent"
           ports:
@@ -23,8 +23,8 @@ spec:
                 name: postgres-config
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: postgredb
+              name: db_postgre
       volumes:
-        - name: postgredb
+        - name: db_postgre
           persistentVolumeClaim:
             claimName: postgres-pv-claim
